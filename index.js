@@ -1,5 +1,22 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
+  if(array.length === 1) return array[0] === target
+  let complementArray = []
+  let n = array.length
+  for(let i = 0; i < n; i++){
+    let complement = target - array[i]
+    complementArray.push(complement)
+  }
+
+  for(let i = 0; i < n; i++){
+    for(let j = 0; j < n; j++){
+      if(array.includes(complementArray[j])){
+        if (array[i] + complementArray[j] === target) return true
+        else return false
+      }else return false
+      
+    }
+  }
 }
 
 /* 
@@ -8,6 +25,11 @@ function hasTargetSum(array, target) {
 
 /* 
   Add your pseudocode here
+  -loop through the array
+  -find the complement of the current numer
+  -add complement to an array
+  - loop again while checking if numer in complement array plus numer in original array adds up to target
+  -return true if target sum exists. else return false
 */
 
 /*
