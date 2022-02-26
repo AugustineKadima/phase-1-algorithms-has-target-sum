@@ -1,39 +1,36 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
   if(array.length === 1) return array[0] === target
-  let complementArray = []
   let n = array.length
   for(let i = 0; i < n; i++){
     let complement = target - array[i]
-    complementArray.push(complement)
-  }
-
-  for(let i = 0; i < n; i++){
     for(let j = 0; j < n; j++){
-      if(array.includes(complementArray[j])){
-        if (array[i] + complementArray[j] === target) return true
-        else return false
-      }else return false
-      
-    }
+      if(array[j] === complement && i != j) return true
+    } 
   }
+  return false
 }
 
 /* 
   Write the Big O time complexity of your function here
+  time complexity = O(n2)
 */
 
 /* 
   Add your pseudocode here
   -loop through the array
   -find the complement of the current numer
-  -add complement to an array
-  - loop again while checking if numer in complement array plus numer in original array adds up to target
-  -return true if target sum exists. else return false
+  -loop again while checking if array has complement
+  -return true if complement exists. else return false
 */
 
 /*
   Add written explanation of your solution here
+  - Our function takes in an array of numbers and a target. We are finding two numbers that add 
+  up to the target. Our outer loop helps us find the complement, the other number that when added 
+  to the current number will give us the target. We then loop again while checking if the complement 
+  exists. If it exists we know that we can we have two numbers that can add up to
+  the target. We then return true. if the complement doesn't exist we return false
 */
 
 // You can run `node index.js` to view these console logs
